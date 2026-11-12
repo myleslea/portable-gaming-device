@@ -1,6 +1,6 @@
-/* Row sizes for the disk menu. A short tube (six disks on a phone held sideways) drops the
-   second line and then the row height until the footer still sits on the glass.
-   tests/flow.cjs repeats this in `diskRow`: keep the two copies in step. */
+/* Row sizes for the old list menu (?menu=list). A short tube drops the second line,
+   then the row height and the gap, until the footer still sits on the glass.
+   Seven disks on the shortest landscape tube use a 1px gap. */
 
 export interface MenuRows { rowH: number; gap: number; top: number }
 
@@ -22,5 +22,10 @@ export function menuRows(diskCount: number, lh: number): MenuRows {
     const next = frame(rh, gap, 4);
     if (next.bottom <= lh - 1) return { rowH: rh, gap, top: next.top };
   }
-  return { rowH: 12, gap: 2, top: 4 };
+  gap = 1;
+  for (let rh = 12; rh >= 11; rh--) {
+    const next = frame(rh, gap, 4);
+    if (next.bottom <= lh - 1) return { rowH: rh, gap, top: next.top };
+  }
+  return { rowH: 11, gap: 1, top: 4 };
 }

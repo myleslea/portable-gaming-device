@@ -13,7 +13,7 @@ This host records game play. The system disk and its boot, launcher and loading 
 
 ## Input
 
-`play.json` is a 360-frame example shared by all six disks. A script is an object with these optional fields:
+`play.json` is a 360-frame example shared by every disk. A script is an object with these optional fields:
 
 | Field | Default | Meaning |
 | --- | --- | --- |
@@ -48,4 +48,4 @@ The existing `rockjaw` sprite role has no palette mapping. Both web and headless
 
 Replay commands in order, including `init`; preserve Screen2D state, its save stack and layer definitions between frames. Every frame begins with an identity transform and a background clear. This stream is a reference recording, not the future native typed-array wire format. It contains enough drawing, text and layer data for web and native hosts to replay the same picture independently.
 
-`tests/unit/conformance.test.ts` runs all six disks twice for 360 frames, checks byte-for-byte stability, and checks that changed input and seeds affect recorded game commands.
+`tests/unit/conformance.test.ts` runs every disk twice for 360 frames, checks byte-for-byte stability, and checks that changed input and seeds affect recorded game commands.
